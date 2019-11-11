@@ -29,7 +29,8 @@
 <script type="text/javascript">
     $("button").click(function() {
         var nombre=$(this).val();
-        location.href ="http://127.0.0.1:8000/catalogo?searchText="+nombre;
+        location.href ="/catalogo?searchText="+nombre;
+
     });
 </script>
         <!--**********************************
@@ -55,22 +56,23 @@
 
 <div class="m-3">
   <div class="col-lg-12 col-lm-8" >
-    <div class="card">
+    <div class="card ">
       <div class="card-header">
         <h1>Articulos Disponibles</h1>
       </div>
       <div class="col-lg-12">
         @include('catalogo.search')
       </div>
-      <div class="card-body">
+      <div class="card-body  bg-dark">
         <div class="row">
         @foreach ($articulos as $a)
-        <div class="card bg-secondary" style="margin: 5px; width:300px;">
-          <img class="card-img-top" src="{{ asset('imagenes/articulos/'.$a->imagen) }}" alt="Card image">
-          <div class="card-body">
-            <h4 class="card-title">{{$a->codigo}}</h4>
+        <div class="card bg-light align-items-center" style="margin: 5px; width:24%; border-color: blue black yellow;
+  border-width: 5px;
+  border-style: solid;">
+          <img class="card-img-top " src="{{ asset('imagenes/articulos/'.$a->imagen) }}" alt="Card image" style="width:75%; height:200px;">
+          <div class="card-body text-center">
             <h4 class="card-title">{{$a->nombre}}</h4>
-            <h5>Q.{{$a->precio}}</h5>
+            <h5 style="color:coral">Q.{{$a->precio}}</h5>
             <h5>{{$a->categoria}}</h5>
             <a href="{{ route('catalogo.show', $a->idarticulo) }}" class="btn btn-primary">Detalle</a>
           </div>
