@@ -14,7 +14,7 @@
         <div class="row">
         @foreach ($articulos as $a)
         <div class="card bg-secondary" style="margin: 5px; width:300px;">
-          <img class="card-img-top" src="{{ asset('imagenes/articulos/'.$a->imagen) }}" alt="Card image">
+          <img class="card-img-top" src="{{ asset('imagenes/articulos/'.$a->imagen) }}" width="50" height="300" alt="Card image">
           <div class="card-body">
             <h4 class="card-title">{{$a->codigo}}</h4>
             <h4 class="card-title">{{$a->nombre}}</h4>
