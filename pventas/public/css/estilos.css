@@ -1,0 +1,157 @@
+*{
+	padding: 0px;
+	margin: 0px;
+}
+#encabezado{
+	background-color: white;
+	width: 100%;
+	height: 75px;
+	position: fixed;
+}
+.mensaje{
+	position: fixed;
+	top: 88%;
+	left: 92%;
+}
+.logo{
+	width: 300px;
+	padding-left: 200px;
+	float: left;
+}
+.nav {
+	padding-top: 20px;
+	margin: auto;
+	width: 100%;
+
+}
+ul {
+	font-weight: bold;
+	list-style:none;
+	font-family: sans-serif;
+}
+.navegacion img.buscar{
+	width: 15px;
+	height: 15px;
+}
+.navegacion li a{
+	background-color: white;
+	color: #416a27;
+	text-decoration: none;
+	padding: 12px 20px;
+	display: block;
+}
+.navegacion > li {
+	min-width: 5%;
+	float:left;
+}
+.navegacion li a:hover{
+	background-color: #EFF2E9;
+	color: #30ad0a;
+	cursor: hand;
+}
+.navegacion li.busqueda a:hover{
+	background-color: white
+;}
+.navegacion li.busqueda a img:hover{
+	background-color: #EFF2E9;
+	cursor: hand;
+}
+.navegacion li ul {
+	display:none;
+	position:absolute;
+	min-width:30px;
+}	
+.navegacion li:hover > ul {
+	display:block;
+}
+
+
+
+.info{
+	padding: 50px 180px;
+}
+.info p{
+	padding: 10px 25px;
+}
+.eventos{
+	float: left;
+	font-size: 125%;
+}
+.eventos h4{
+	font-family: sans-serif;
+	font-weight: normal;
+	font-size: 125%;
+	padding-left: 10px;
+}
+.noticias{
+	font-weight: bold;
+	font-size: 125%;
+	font-family: sans-serif;
+	float: left;
+
+}
+ img.flecha{
+	margin-right: 5px;
+	float: left;
+	width: 30px;
+	height: 30px;
+}
+.info div{
+	margin-top: 45px;
+}
+
+
+
+.pie{
+	font-family: sans-serif;
+	width: 100%;
+}
+.informacion{
+	background-color: #055d33;
+	width: 93.4%;
+	height: 400px;
+	padding-left: 100px;
+}
+.campus{
+	font-weight: normal;
+	font-size: 100%;
+	color: white;
+	margin: 50px;
+	padding: 100px 60px;
+	float: left;
+	text-align: center;
+}
+
+.redes li{
+	min-width: 3%;
+	float: left;
+	position: relative;
+	top: -5em;
+	left: 36em;
+}
+.redes li a{
+	text-decoration: none;
+}
+.redes li img{
+	padding: 3px;
+	border-radius: 10px;
+}
+.final{
+	background-color: black;
+	color: white;
+	width: 100%;
+	height: 60px;
+}
+.final p{
+	font-weight: bold;
+	padding: 20px 200px;
+}
+.server{
+	background-color: white;
+	width: 100%;
+	height: 25px;
+	text-align: center;
+	padding-top: 10px;
+	font-size: 75%;
+}
+

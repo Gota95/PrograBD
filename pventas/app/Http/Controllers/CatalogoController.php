@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Articulo;
+use App\Categoria;
 Use DB;
 
 
@@ -21,11 +22,12 @@ class CatalogoController extends Controller
       $articulos=DB::table('articulo as art')
       ->join('categoria as cat', 'art.idcategoria','=','cat.idcategoria')->select('art.idarticulo','art.codigo',
       'art.nombre','art.precio','art.stock','art.descripcion','art.imagen','art.estado',DB::raw("cat.nombre as categoria"))
-      ->where('art.nombre','LIKE','%'.$query.'%')
+      ->where('cat.nombre','LIKE','%'.$query.'%')
       ->orderBy('art.idarticulo','asc')
       ->paginate(7);
+      $categorias=Categoria::all();
       // se retorna  la vista a mostrar y en una variable los articulos
-      return view("catalogo.index",["articulos"=>$articulos,"searchText"=>$query]);
+      return view("catalogo.index",["articulos"=>$articulos,"searchText"=>$query],compact('categorias'));
       }
     }
 

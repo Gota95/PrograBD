@@ -8,19 +8,25 @@
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        
         <!-- Styles -->
-      <link href="{{asset('css/style.css')}}" rel="stylesheet">
+        <link rel="stylesheet" href="css/estilos.css">
+        <link href="{{asset('css/style.css')}}" rel="stylesheet">
     </head>
-    <body class="bg2">
+
+    <body class="">
 
 
-      <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
+      <nav class="navbar navbar-expand-md navbar-dark bg-dark navbar-laravel">
         <div class="container">
           <h3><a class="navbar-brand text-white" href="#">Sistema Ventas</a></h3>
           <h3><a class="navbar-brand text-white" href="/catalogo">Productos</a></h3>    
           <h3><a href="{{'/home'}}" style="text-decoration-line: none" class="text-white"><i calss="icon-user text-primary">
           </i> Iniciar Sesión</a></h3>
         </div>
-      </nav>
+	  </nav>
+	  <div class="content-body">
+		@yield('contenido')
+	  </div>
     </body>
 </html>
