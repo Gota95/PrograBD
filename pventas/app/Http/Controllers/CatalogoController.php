@@ -64,7 +64,10 @@ class CatalogoController extends Controller
       ->join('categoria as cat', 'art.idcategoria','=','cat.idcategoria')->select('art.idarticulo','art.codigo',
       'art.nombre','art.precio','art.stock','art.descripcion','art.imagen','art.estado',DB::raw("cat.nombre as categoria"))
       ->where('art.idarticulo','=',$id)->first();
-      return view("catalogo.show",["articulo"=>$articulo]);
+      $cat=Articulo::findOrFail($id);
+      $sugeridos=DB::table('articulo as a')
+      ->where('a.idcategoria','=',$cat->idcategoria)->get();
+      return view("catalogo.show",["articulo"=>$articulo,"sugeridos"=>$sugeridos]);
     }
 
     /**
