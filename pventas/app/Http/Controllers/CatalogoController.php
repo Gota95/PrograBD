@@ -23,7 +23,7 @@ class CatalogoController extends Controller
       'art.nombre','art.precio','art.stock','art.descripcion','art.imagen','art.estado',DB::raw("cat.nombre as categoria"))
       ->where('art.nombre','LIKE','%'.$query.'%')
       ->orderBy('art.idarticulo','asc')
-      ->paginate(7);
+      ->paginate(10);
       // se retorna  la vista a mostrar y en una variable los articulos
       return view("catalogo.index",["articulos"=>$articulos,"searchText"=>$query]);
       }
@@ -62,12 +62,10 @@ class CatalogoController extends Controller
       ->join('categoria as cat', 'art.idcategoria','=','cat.idcategoria')->select('art.idarticulo','art.codigo',
       'art.nombre','art.precio','art.stock','art.descripcion','art.imagen','art.estado',DB::raw("cat.nombre as categoria"))
       ->where('art.idarticulo','=',$id)->first();
-      $art=Articulo::findOrFail($id);
-      $articulos=DB::table('articulo as a')
-      ->join('categoria as cat', 'a.idcategoria','=','cat.idcategoria')
-      ->select('a.idarticulo','a.codigo','a.nombre','a.precio','a.descripción','a.imagen','a.estado',DB::raw("cat.nombre as categoria"))
-      ->where('cat.idcategoria','=',$art->idcategoria);
-      return view("catalogo.show",["articulo"=>$articulo,"articulos"=>$articulos]);
+      $cat=Articulo::findOrFail($id);
+      $sugeridos=DB::table('articulo as a')
+      ->where('a.idcategoria','=',$cat->idcategoria)->get();
+      return view("catalogo.show",["articulo"=>$articulo,"sugeridos"=>$sugeridos]);
     }
 
     /**
