@@ -315,7 +315,7 @@ Agregar
 
   total=total-subtotal[index];
 
-    $("#total").html("S/. " + total);
+    $("#total").html("Q/. " + total);
 
     $("#total_venta").val(total);
 
