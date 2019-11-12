@@ -17,9 +17,6 @@ Route::get('/', function () {
 Route::get('/map',function(){
     return view('catalogo.mapa');
 });
-Route::get('/catalogo/{idarticulo}', function () {
-    return view('catalogo.carrito');
-});
 
 Auth::routes();
 
