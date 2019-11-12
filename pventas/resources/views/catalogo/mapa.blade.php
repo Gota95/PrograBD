@@ -94,26 +94,17 @@ $along=array();
 		    	}
 		    }
 		   console.log("la mayor(menor) distancia es: "+mdis+" Latitud es "+ala[indice]+" Longitud es: "+alo[indice]);
-		   var contentString = '<div id="content">'+
+		   var contentactual = '<div id="content">'+
             '<div id="siteNotice">'+
             '</div>'+
-            '<h1 id="firstHeading" class="firstHeading">Uluru</h1>'+
+            '<h1 id="firstHeading" class="firstHeading">Usted</h1>'+
             '<div id="bodyContent">'+
-            '<p><b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large ' +
-            'sandstone rock formation in the southern part of the '+
-            'Northern Territory, central Australia. It lies 335&#160;km (208&#160;mi) '+
-            'south west of the nearest large town, Alice Springs; 450&#160;km '+
-            '(280&#160;mi) by road. Kata Tjuta and Uluru are the two major '+
-            'features of the Uluru - Kata Tjuta National Park. Uluru is '+
-            'sacred to the Pitjantjatjara and Yankunytjatjara, the '+
-            'Aboriginal people of the area. It has many springs, waterholes, '+
-            'rock caves and ancient paintings. Uluru is listed as a World '+
-            'Heritage Site.</p>'+
+            '<p><b>Usted está acá</b>, siga la siguiente ruta para llegar a nuestra tienda más cercana a usted.</p>'+
             '</div>'+
             '</div>';
 
 			var infowindow = new google.maps.InfoWindow({
-			content: contentString
+			content: contentactual
 			});
 			var marker = new google.maps.Marker({
 		      position: coord,
@@ -124,10 +115,25 @@ $along=array();
 				infowindow.open(gmap, marker);
 			});
 		    var coord2 = {lat: parseFloat(ala[indice]),lng: parseFloat(alo[indice])};
+
+			var contentienda = '<div id="content">'+
+            '<div id="siteNotice">'+
+            '</div>'+
+            '<h1 id="firstHeading" class="firstHeading">Nuera tienda</h1>'+
+            '<div id="bodyContent">'+
+            '<p><b>Store Online</b>, se encuentra cada vez más cerca de usted, gracias por preferirnos</p>'+
+            '</div>'+
+            '</div>';
+			var infowindow2 = new google.maps.InfoWindow({
+			content: contentienda
+			});
 		    var marker2 = new google.maps.Marker({
 		      position: coord2,
 		      map: gmap
 		    });
+			marker2.addListener('click', function() {
+				infowindow2.open(gmap, marker2);
+			});
 		    //rutas
 		    var objconfigDR={
 			map: gmap
