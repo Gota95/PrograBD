@@ -14,7 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
-
+Route::get('/map',function(){
+    return view('catalogo.mapa');
+});
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
