@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Articulo;
+use App\Sucursal;
 use App\Categoria;
 Use DB;
 
@@ -26,8 +27,9 @@ class CatalogoController extends Controller
       ->orderBy('art.idarticulo','asc')
       ->paginate(7);
       $categorias=Categoria::all();
+      $sucursals=Sucursal::all();
       // se retorna  la vista a mostrar y en una variable los articulos
-      return view("catalogo.index",["articulos"=>$articulos,"searchText"=>$query],compact('categorias'));
+      return view("catalogo.index",["articulos"=>$articulos,"searchText"=>$query],compact('categorias'),compact('sucursals'));
       }
     }
 
@@ -67,7 +69,8 @@ class CatalogoController extends Controller
       $cat=Articulo::findOrFail($id);
       $sugeridos=DB::table('articulo as a')
       ->where('a.idcategoria','=',$cat->idcategoria)->get();
-      return view("catalogo.show",["articulo"=>$articulo,"sugeridos"=>$sugeridos]);
+      $sucursals=Sucursal::all();
+      return view("catalogo.show",["articulo"=>$articulo,"sugeridos"=>$sugeridos,"sucursals"=>$sucursals]);
     }
 
     /**
