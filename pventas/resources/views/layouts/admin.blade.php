@@ -113,6 +113,7 @@
                             <i class="icon-people"></i><span class="nav-text">Registro</span>
                         </a>
                         <ul aria-expanded="false">
+                            <li><a href="/sucursal">Sucursal</a></li>
                             <li><a href="/users">Usuarios</a></li>
                             <li><a href="/persona">Persona</a></li>
                             <li><a href="/tipo">Tipo de persona</a></li>
