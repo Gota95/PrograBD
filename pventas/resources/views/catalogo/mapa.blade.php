@@ -99,7 +99,7 @@ $along=array();
             '</div>'+
             '<h1 id="firstHeading" class="firstHeading">Usted</h1>'+
             '<div id="bodyContent">'+
-            '<p><b>Usted está acá</b>, siga la siguiente ruta para llegar a nuestra tienda más cercana a usted.</p>'+
+            '<p><strong>Usted está acá</strong>, siga la siguiente ruta para llegar a <br>nuestra tienda más cercana a usted.</p>'+
             '</div>'+
             '</div>';
 
@@ -119,9 +119,9 @@ $along=array();
 			var contentienda = '<div id="content">'+
             '<div id="siteNotice">'+
             '</div>'+
-            '<h1 id="firstHeading" class="firstHeading">Nuera tienda</h1>'+
+            '<h1 id="firstHeading" class="firstHeading">Nuestra Tienda</h1>'+
             '<div id="bodyContent">'+
-            '<p><b>Store Online</b>, se encuentra cada vez más cerca de usted, gracias por preferirnos</p>'+
+            '<p><strong>Store Online</strong>, se encuentra cada vez más cerca de usted,<br>gracias por preferirnos</p>'+
             '</div>'+
             '</div>';
 			var infowindow2 = new google.maps.InfoWindow({
