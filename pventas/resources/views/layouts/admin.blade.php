@@ -106,6 +106,8 @@
             <div class="nk-nav-scroll">
                 <ul class="metismenu" id="menu">
                     <li class="nav-label">Menú</li>
+
+                  @if(Auth::user()->rol == "admin")
                     <li>
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
                             <i class="icon-people"></i><span class="nav-text">Registro</span>
@@ -117,6 +119,9 @@
                             <!-- <li><a href="./index-2.html">Home 2</a></li> -->
                         </ul>
                     </li>
+                  @endif
+
+                  @if(Auth::user()->rol == "admin" || Auth::user()->rol == "gerente")
                   <li>
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
                             <i class="icon-basket-loaded "></i><span class="nav-text">Productos</span>
@@ -126,8 +131,10 @@
                             <li><a href="/articulo">Articulos</a></li>
                         </ul>
                     </li>
+                  @endif
 
-                    <li class="nav-label">Compra/Venta</li>
+                  <li class="nav-label">Compra/Venta</li>
+                  @if(Auth::user()->rol == "admin" || Auth::user()->rol == "gerente")
                     <li>
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
                             <i class="icon-bag "></i> <span class="nav-text">Ingresos</span>
@@ -138,6 +145,8 @@
                         </ul>
 
                     </li>
+                  @endif
+                  @if(Auth::user()->rol == "admin" || Auth::user()->rol == "gerente")
                     <li>
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
                             <i class="icon-basket "></i><span class="nav-text">Ventas</span>
@@ -147,9 +156,11 @@
 
                         </ul>
                     </li>
+                  @endif
                     <br>
                     <li class="nav-label">Mas opciones</li>
-                   
+
+                    @if(Auth::user()->rol == "admin" || Auth::user()->rol == "gerente")
                         <li>
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
                         <i class="icon-docs"></i><span class="nav-text">Reportes</span>
@@ -159,6 +170,7 @@
                           <li> <a href="{{route('productos')}}">Productos en Existencia</a></li>
                         </ul>
                         </li>
+                      @endif
                         <li>
                         <a href="./app-profile.html">
                         <i class="icon-social-facebook "></i><span class="nav-text">Acerca de</span>

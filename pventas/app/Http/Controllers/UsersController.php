@@ -24,7 +24,7 @@ public function create(){
   return view("users.create");
 }
 
-public function store(UsuariosFormRequest $request){
+public function store(UsersFormRequest $request){
   $usuario = new User;
   $usuario->name=$request->get('name');
   $usuario->email=$request->get('email');
@@ -38,7 +38,7 @@ public function edit($id){
   return view("users.edit",["usuario"=>User::findOrFail($id)]);
 }
 
-public function update(UsuariosFormRequest $request, $id){
+public function update(UsersFormRequest $request, $id){
   $usuario=User::findOrFail($id);
   $usuario->name=$request->get('name');
   $usuario->email=$request->get('email');

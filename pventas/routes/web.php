@@ -14,16 +14,13 @@
 Route::get('/', function () {
     return view('welcome');
 });
-<<<<<<< HEAD
 Route::get('/map',function(){
     return view('catalogo.mapa');
 });
-=======
 Route::get('/catalogo/{idarticulo}', function () {
     return view('catalogo.carrito');
 });
 
->>>>>>> 1669db891458f43881196acc95f229f7aa6956e5
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
