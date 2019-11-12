@@ -37,7 +37,9 @@ class ArticuloController extends Controller
       ->orderBy('art.idarticulo','asc')
       ->paginate(7);
       // se retorna  la vista a mostrar y en una variable los articulos
-      return view("articulo.index",["articulos"=>$articulos,"searchText"=>$query ]);
+      $rarticulos=Rarticulo::all();
+      $sucursales=Sucursal::all();
+      return view("articulo.index",["articulos"=>$articulos,"searchText"=>$query ],compact('rarticulos','sucursales'));
       }
     }
 

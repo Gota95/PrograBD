@@ -18,6 +18,7 @@
                 <th>Nombre </th>
                 <th>Precio</th>
                 <th><center>Cantidad Disponible</center></th>
+                <th>Sucursal</th>
                 <th>Imagen</th>
                 <th>Estado</th>
                 <th>Opciones</th>
@@ -28,17 +29,25 @@
                 <td>{{$art->categoria}}</td>
                 <td>{{$art->codigo}}</td>
                 <td>{{$art->nombre}}</td>
-                  <td>Q.{{$art->precio}}</td>
-
-                  <td><center>{{$art->stock}}</center></td>
-                  <td>
-                  <img src="{{asset('imagenes/articulos/'.$art->imagen)}}"alt="{{$art->nombre}}" height="100px" width="100px" class="img-thumbail">
-                  </td>
-                  <td>{{$art->estado}}</td>
-                  <td>
-                  <a href="{{ route('articulo.edit', $art->idarticulo) }}"> <button class="btn btn-info">Editar</button></a>
-                   <a href="" data-target="#modal-delete-{{$art->idarticulo}}" data-toggle="modal">
-                   <button class="btn btn-danger"> Eliminar </button></a>
+                <td>Q.{{$art->precio}}</td>
+                <td><center>{{$art->stock}}</center></td>
+                @foreach($rarticulos as $rarticulo)
+                  @if($rarticulo->idarticulo==$art->idarticulo)
+                    @foreach($sucursales as $sucursal)
+                      @if($rarticulo->idsucursal==$sucursal->idsucursal)
+                        <td>{{$sucursal->nombre}}</td>
+                      @endif
+                    @endforeach
+                  @endif
+                @endforeach
+                <td>
+                <img src="{{asset('imagenes/articulos/'.$art->imagen)}}"alt="{{$art->nombre}}" height="100px" width="100px" class="img-thumbail">
+                </td>
+                <td>{{$art->estado}}</td>
+                <td>
+                <a href="{{ route('articulo.edit', $art->idarticulo) }}"> <button class="btn btn-info">Editar</button></a>
+                  <a href="" data-target="#modal-delete-{{$art->idarticulo}}" data-toggle="modal">
+                  <button class="btn btn-danger"> Eliminar </button></a>
 
                 </td>
 
