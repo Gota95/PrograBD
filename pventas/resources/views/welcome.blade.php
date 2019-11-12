@@ -25,7 +25,11 @@
           <h3><a href="{{'/home'}}" style="text-decoration-line: none" class="text-white"><i calss="icon-user text-primary">
           </i> Iniciar Sesión</a></h3>
         </div>
-	  </nav>
+    </nav>
+    <div class="container-fluid" style="margin:0%; padding:0%;">
+		  @yield('carrusel')
+    </div>
+    
 	  <div class="content-body">
 		@yield('contenido')
     </div>

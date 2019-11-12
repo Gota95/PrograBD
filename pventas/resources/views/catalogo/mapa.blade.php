@@ -1,19 +1,17 @@
 @extends ('welcome')
 <?php
-
-$conexion = mysqli_connect("localhost", "root", "","finalmapaprueba") or trigger_error(mysql_error(),E_USER_ERROR);
-
+use App\Sucursal;
 $alat=array();
 $along=array();
-$suc="SELECT * FROM sucursal";
-    $p=mysqli_query($conexion,$suc);
-    while ($op=mysqli_fetch_array($p)) {
-
-        array_push($alat,$op['Latitud']);
-        array_push($along,$op['Longitud']);
-    }
+	$sucursales=Sucursal::all();
+	foreach ($sucursales as $sucursal) {
+		 array_push($alat,$sucursal->latitud);
+        array_push($along,$sucursal->longitud);
     
+	}
 ?>
+
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -31,9 +29,16 @@ $suc="SELECT * FROM sucursal";
   </head>
   @section('contentmapa')
   <body>
+  
+</div>
 	<h1 class="bg-alert text-success font-weight-bold display-4">..Encuentramos en nuestra tienda más cercana..</h1>
 	<div class="container align-items-center">
-	<div id="mapa" class="container"></div>
+		<div class="text-center">
+			
+			<div id="mapa" class="container">	
+				
+			</div>
+		</div>
 	</div>
 	<script>
     	var ala = [ '<?php echo implode("','",$alat);?>' ];
@@ -41,9 +46,9 @@ $suc="SELECT * FROM sucursal";
 		navigator.geolocation.getCurrentPosition(localizacion,error);
 		// Verificar si soporta geolocalizacion
 		if (navigator.geolocation) {
-			//output.innerHTML = "<p>Tu navegador soporta Geolocalizacion</p>";
+			document.getElementById('mapa').innerHTML = "<h3>Tu navegador soporta Geolocalizacion<br>CARGANDO</h3><div class='spinner-border'></div> ";
 		}else{
-			//output.innerHTML = "<p>Tu navegador no soporta Geolocalizacion</p>";
+			document.getElementById('mapa').innerHTML = "<p>Tu navegador no soporta Geolocalizacion</p>";
 		}
 		//Obtenemos latitud y longitud
 		function localizacion(posicion){
@@ -56,6 +61,7 @@ $suc="SELECT * FROM sucursal";
 		    });
 			var menor=[];
 			var dl,dlo;
+
 		    <?php
 		    	$menor;
 			    foreach ($alat as $l) {
@@ -88,15 +94,46 @@ $suc="SELECT * FROM sucursal";
 		    	}
 		    }
 		   console.log("la mayor(menor) distancia es: "+mdis+" Latitud es "+ala[indice]+" Longitud es: "+alo[indice]);
-		    var marker = new google.maps.Marker({
+		   var contentactual = '<div id="content">'+
+            '<div id="siteNotice">'+
+            '</div>'+
+            '<h1 id="firstHeading" class="firstHeading">Usted</h1>'+
+            '<div id="bodyContent">'+
+            '<p><strong>Usted está acá</strong>, siga la siguiente ruta para llegar a <br>nuestra tienda más cercana a usted.</p>'+
+            '</div>'+
+            '</div>';
+
+			var infowindow = new google.maps.InfoWindow({
+			content: contentactual
+			});
+			var marker = new google.maps.Marker({
 		      position: coord,
-		      map: gmap
+		      map: gmap,
+			  title: "Usted está acá"
 		    });
+			marker.addListener('click', function() {
+				infowindow.open(gmap, marker);
+			});
 		    var coord2 = {lat: parseFloat(ala[indice]),lng: parseFloat(alo[indice])};
+
+			var contentienda = '<div id="content">'+
+            '<div id="siteNotice">'+
+            '</div>'+
+            '<h1 id="firstHeading" class="firstHeading">Nuestra Tienda</h1>'+
+            '<div id="bodyContent">'+
+            '<p><strong>Store Online</strong>, se encuentra cada vez más cerca de usted,<br>gracias por preferirnos</p>'+
+            '</div>'+
+            '</div>';
+			var infowindow2 = new google.maps.InfoWindow({
+			content: contentienda
+			});
 		    var marker2 = new google.maps.Marker({
 		      position: coord2,
 		      map: gmap
 		    });
+			marker2.addListener('click', function() {
+				infowindow2.open(gmap, marker2);
+			});
 		    //rutas
 		    var objconfigDR={
 			map: gmap

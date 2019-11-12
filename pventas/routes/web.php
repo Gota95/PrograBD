@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
 Route::get('/map',function(){
     return view('catalogo.mapa');
@@ -21,9 +21,12 @@ Route::get('/map',function(){
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+//RUTA PARA MODULO DE REGISTRO DE SURCURSAL
+Route::resource('sucursal','SucursalController');
 
 //RUTA PARA MODULO DE PRODUCTO
 Route::resource('categoria','CategoriaController');
+
 Route::resource('articulo','ArticuloController');
 Route::resource('venta','VentaController');
 Route::resource('ingreso','IngresoController');
