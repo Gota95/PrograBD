@@ -1,5 +1,28 @@
 @extends ('layouts.content')
 @section('contenido')
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+ <!--**********************************
+            Sidebar start
+        ***********************************-->
+        <div class="container" style="float:left;">
+        <div class="nk-sidebar">
+            <div class="nk-nav-scroll">
+                <ul class="metismenu" id="menu">
+                    <li class="nav-label">Sucursales</li>
+                    <div class="form-group">
+                          @foreach($sucursals as $suc)
+                                <a  href="javascript:void()" aria-expanded="false">
+                                 --   </i><span  class="nav-text text-warning font-weight-bold">{{$suc->nombre}}</span> 
+                                </a>
+                            </li>
+                          @endforeach
+                    </div>
+                </ul>
+            </div>
+        </div>
+</div>
+
 <br>
 <div class="row">
   <div class="card col-lg-8" style="left: 300px;">

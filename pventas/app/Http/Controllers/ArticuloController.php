@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Articulo;
+use App\Sucursal;
+use App\Rarticulo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use App\Http\Requests\ArticuloFormRequest;
@@ -28,13 +30,14 @@ class ArticuloController extends Controller
       if($request){
       $query= trim($request->get('searchText'));
       $articulos=DB::table('articulo as art')
-      ->join('categoria as cat', 'art.idcategoria','=','cat.idcategoria')->select('art.idarticulo','art.codigo',
+      ->join('categoria as cat', 'art.idcategoria','=','cat.idcategoria')
+      ->select('art.idarticulo','art.codigo',
       'art.nombre','art.precio','art.stock','art.descripcion','art.imagen','art.estado',DB::raw("cat.nombre as categoria"))
       ->where('art.nombre','LIKE','%'.$query.'%')
       ->orderBy('art.idarticulo','asc')
       ->paginate(7);
       // se retorna  la vista a mostrar y en una variable los articulos
-      return view("articulo.index",["articulos"=>$articulos,"searchText"=>$query]);
+      return view("articulo.index",["articulos"=>$articulos,"searchText"=>$query ]);
       }
     }
 
@@ -48,7 +51,8 @@ class ArticuloController extends Controller
     {
       //se obtiene la tabla categoria y se llama la vista que se mostrara
       $categorias=DB::table('categoria')->get();
-      return view("articulo.create",["categorias"=>$categorias]);
+      $sucursals=DB::table('sucursal')->get();
+      return view("articulo.create",["categorias"=>$categorias,"sucursals"=>$sucursals]);
     }
 
     /**
@@ -60,8 +64,10 @@ class ArticuloController extends Controller
      //funcion que guarda en la base de datos la informacion obtenida del formulario
     public function store(Request $request)
     {
+  
       //se obtienen los datos enviados desde el formulario creando asi un nuevo articulo
       $articulo= new Articulo;
+
       $articulo->idarticulo=$request->get('idarticulo');
       $articulo->codigo=$request->get('codigo');
       $articulo->nombre=$request->get('nombre');
@@ -77,8 +83,18 @@ class ArticuloController extends Controller
       $articulo->imagen=$file->getClientOriginalName();
       }
       $articulo->idcategoria=$request->get('idcategoria');
+  
       $articulo->save();
 
+      $rarticulos= new Rarticulo;
+      $rarticulos->idarticulo=$articulo->idarticulo;
+      $rarticulos->idsucursal=$request->get('idsucursal');
+      $rarticulos->save();
+
+      
+      DB::commit();
+
+ 
       //se redirecciona al index donde se listan todos los articulos
       return Redirect::to('articulo/');
     }
@@ -112,8 +128,9 @@ class ArticuloController extends Controller
     {
       // se envia la tabla categoria para enlazarla con los articulos
       $categorias=DB::table('categoria')->get();
+      $rarticulos=DB::table('rarticulo')->get();
       //retornamos la vista y los datos del articulo en una variable
-      return view("articulo.edit",["articulo"=>Articulo::findOrFail($id),"categorias"=>$categorias]);
+      return view("articulo.edit",["articulo"=>Articulo::findOrFail($id),"categorias"=>$categorias, "rarticulos"=>$rarticulos]);
     }
 
     /**

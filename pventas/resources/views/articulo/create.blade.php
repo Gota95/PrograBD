@@ -36,6 +36,20 @@
 
 
 <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
+<div class="form-group">
+<label>Sucursal</label>
+<select name="idsucursal" class="form-control">
+@foreach ($sucursals as $su)
+<option value="{{$su->idsucursal}}">{{$su->nombre}}</option>
+@endforeach
+</select>
+</div>
+</div>
+
+
+
+
+<div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
 
 <div class="form-group">
 <label for="codigo">Codigo</label>

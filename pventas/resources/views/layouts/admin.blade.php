@@ -89,7 +89,7 @@
                     <h3>SV</h3>
                          </b>
                     <span class="brand-title">
-                        <center><h3>Tienda Gaby</h3></center>
+                        <center><h3>Store Online</h3></center>
                     </span>
                 </a>
             </div>
@@ -113,6 +113,7 @@
                             <i class="icon-people"></i><span class="nav-text">Registro</span>
                         </a>
                         <ul aria-expanded="false">
+                            <li><a href="/sucursal">Sucursal</a></li>
                             <li><a href="/users">Usuarios</a></li>
                             <li><a href="/persona">Persona</a></li>
                             <li><a href="/tipo">Tipo de persona</a></li>
@@ -172,8 +173,9 @@
                         </li>
                       @endif
                         <li>
-                        <a href="./app-profile.html">
-                        <i class="icon-social-facebook "></i><span class="nav-text">Acerca de</span>
+                        <a href="/">
+                        <i class="icon-social-facebook "></i><span class="nav-text">Pagina Principal</span>
+           
                         </a>
 
 </li>
