@@ -14,13 +14,17 @@
         </div>
         <div class="card bg-light" style="margin: 5px; width:300px; left: 100px; text-align: center;">
           <label for="codigo">Codigo</label>
-          <h4 class="card-title">{{$articulo->codigo}}</h4>
+          <h4 class="card-title" >{{$articulo->codigo}}</h4>
           <label for="precio">Precio</label>
           <h5>Q.{{$articulo->precio}}</h5>
           <label for="categoria">Categoria</label>
           <h5>{{$articulo->categoria}}</h5>
           <br>
-          <button width="50" height="500" style="position: flex;" type="button" name="Add" class="btn btn-primary"> <i class="ti-shopping-cart"></i> Agregar</button>
+    
+          <a href="{{ route('catalogo.carrito', $articulo->idarticulo) }}"> <button class="btn btn-info"><i class="ti-shopping-cart"></i>Agregar</button></a>
+               
+
+         
         </div>
       </div>
     </div>
@@ -39,6 +43,7 @@
             <h4 class="card-title">{{$a->nombre}}</h4>
             <h5>Q.{{$a->precio}}</h5>
             <a href="{{ route('catalogo.show', $a->idarticulo) }}" class="btn btn-primary">Detalle</a>
+            
           </div>
         </div>
     @endforeach
@@ -47,4 +52,14 @@
     </div>
   </div>
 </div>
+
+
+
+
+@push ('scripts')
+
+
+
+@endpush
+
 @endsection

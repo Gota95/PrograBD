@@ -14,6 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/catalogo/{idarticulo}', function () {
+    return view('catalogo.carrito');
+});
 
 Auth::routes();
 
