@@ -21,7 +21,7 @@
           <h5>{{$articulo->categoria}}</h5>
           <br>
     
-          <a href="{{ route('catalogo.carrito', $articulo->idarticulo) }}"> <button class="btn btn-info"><i class="ti-shopping-cart"></i>Agregar</button></a>
+          <a href="{{ route('catalogo.index', $articulo->idarticulo) }}"> <button class="btn btn-info"><i class="ti-shopping-cart"></i>Agregar</button></a>
                
 
          
