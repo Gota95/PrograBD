@@ -107,16 +107,18 @@
                 <ul class="metismenu" id="menu">
                     <li class="nav-label">Menú</li>
 
-                  @if(Auth::user()->rol == "admin")
+                  @if(Auth::user()->rol == "admin"||Auth::user()->rol=="gerente")
                     <li>
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
                             <i class="icon-people"></i><span class="nav-text">Registro</span>
                         </a>
                         <ul aria-expanded="false">
                             <li><a href="/users">Usuarios</a></li>
+                          @if (Auth::user()->rol=="admin")
                             <li><a href="/persona">Persona</a></li>
                             <li><a href="/tipo">Tipo de persona</a></li>
                             <!-- <li><a href="./index-2.html">Home 2</a></li> -->
+                          @endif
                         </ul>
                     </li>
                   @endif
