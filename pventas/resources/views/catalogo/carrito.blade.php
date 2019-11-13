@@ -73,8 +73,8 @@
                             <td><input class="form-control form-control-sm" type="number" value="{{$values['cantidad']}}">
                             </td>
                             <td>Q.{{$values['precio']}}</td>
-                            <td>Q.{{$values['subtotal']}}</td>
-                            <td class="p-0" id="eliminar"><a href="#" class="btn btn-danger w-100" name="elimi"><span class="fas fa-trash-alt"></span></a></td>
+                            <td>Q.<p name="sub">{{$values['subtotal']}}</p></td>
+                            <td class="p-0" id="eliminar"><a href="" class="btn btn-danger w-100" name="elimi"><span class="fas fa-trash-alt"></span></a></td>
                         </tr>   
                     @endforeach
                     </tbody>
@@ -93,6 +93,12 @@
 
 
 <script>
+    var sum=document.getElementsByName('sub');
+    var suma=0;
+    for(i=1;i<=sum.length;i++){
+        suma=suma+sum.values;
+    }
+    alert(suma);
 function imprimirElemento(elemento){
     var boto = document.getElementsByName("elimi");
     for(i=1;i<=boto.length*100;i++){
