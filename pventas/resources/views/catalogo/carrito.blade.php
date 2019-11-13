@@ -96,13 +96,6 @@
 
 
 <script>
-    var sum=document.getElementsByName("sub");
-    var suma=0;
-    for(i=0;i<=sum.length;i++){
-        var cant=parseInt(document.getElementsByName("sub")[i].value);
-        suma=suma+cant;
-        document.getElementById("total").innerHTML="Total: <strong>Q."+suma+"</strong>";
-    }
     
 function imprimirElemento(elemento){
     var boto = document.getElementsByName("elimi");
@@ -137,6 +130,13 @@ function eliminarElemento(id){
     		padre = imagen.parentNode;
     		padre.removeChild(imagen);
     	}
+    }
+    var sum=document.getElementsByName("sub");
+    var suma=0;
+    for(i=0;i<=sum.length;i++){
+        var cant=parseInt(document.getElementsByName("sub")[i].value);
+        suma=suma+cant;
+        document.getElementById("total").innerHTML="Total: <strong>Q."+suma+"</strong>";
     }
 </script>
 
