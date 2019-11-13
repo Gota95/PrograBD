@@ -7,7 +7,7 @@ use App\Articulo;
 use App\Sucursal;
 use App\Categoria;
 Use DB;
-
+use Illuminate\Support\Facades\DB as IlluminateDB;
 
 class CatalogoController extends Controller
 {
@@ -38,9 +38,12 @@ class CatalogoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create()//cotizacion
     {
-        //
+        DB::select('CREATE TEMPORARY TABLE carritotemp(id INT NOT NULL AUTO_INCREMENT, 
+        idarticulo INT NOT NULL,
+        cantidad INT NOT NULL,
+        PRIMARY KEY(id)');
     }
 
     /**

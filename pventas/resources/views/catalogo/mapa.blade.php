@@ -136,12 +136,13 @@ $along=array();
 			});
 		    //rutas
 		    var objconfigDR={
-			map: gmap
+				map: gmap,
+				suppressMarkers: true
 			}
 			var objconfigDS={
-			origin:marker.getPosition(),
-			destination:marker2.getPosition(),
-			travelMode: google.maps.TravelMode.DRIVING
+				origin:marker.getPosition(),
+				destination:marker2.getPosition(),
+				travelMode: google.maps.TravelMode.DRIVING
 			}
 
 
@@ -152,7 +153,6 @@ $along=array();
 	      	ds.route(objconfigDS,rutear);
 	      	function rutear(resultados, status){
 	      		//mostrar linea de los 2 puntos
-	      		alert(resultados); 	
 	      		if(status==google.maps.DirectionsStatus.OK){
 	      			dr.setDirections(resultados);
 	      		}
@@ -163,11 +163,11 @@ $along=array();
 		    //console.log(google.maps.geometry.spherical.computeDistanceBetween(marker.getPosition(), marker2.getPosition()));
 		}
 		function error(){
-			divMapa.innerHTML = "<p>No se pudo obtener tu ubicación</p>";
+			document.getElementById('mapa').innerHTML = "<p>No se pudo obtener tu ubicación</p>";
 		}
       
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAboy53WFKi8zEw2KKZlxIyjqAWlX7Mhj4&libraries=geometry"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC1pmI9Ehu0hfTqpiSStBpExbdo-hafjug&libraries=geometry"></script>
   </body>
 </html>
 @endsection

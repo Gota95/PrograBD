@@ -75,6 +75,7 @@
             <h5 style="color:coral">Q.{{$a->precio}}</h5>
             <h5>{{$a->categoria}}</h5>
             <a href="{{ route('catalogo.show', $a->idarticulo) }}" class="btn btn-primary">Detalle</a>
+            <a href="{{ route('catalogo.create') }}" class="btn btn-primary">Carrito</a>
           </div>
         </div>
         @endforeach
