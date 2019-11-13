@@ -52,8 +52,8 @@ class ArticuloController extends Controller
     {
       //se obtiene la tabla categoria y se llama la vista que se mostrara
       $categorias=DB::table('categoria')->get();
-      $sucursales=DB::table('sucursal')->get();
-      return view("articulo.create",["categorias"=>$categorias,"sucursals"=>$sucursales]);
+
+      return view("articulo.create",["categorias"=>$categorias]);
     }
 
     /**
@@ -87,10 +87,6 @@ class ArticuloController extends Controller
 
       $articulo->save();
 
-      $rarticulos= new Rarticulo;
-      $rarticulos->idarticulo=$articulo->idarticulo;
-      $rarticulos->idsucursal=$request->get('idsucursal');
-      $rarticulos->save();
 
 
       DB::commit();
