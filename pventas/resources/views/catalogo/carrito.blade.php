@@ -55,7 +55,7 @@
                     <h1 class="text-center">Cotización</h1>
                 </div>
                 <div class="card-body">
-                <h3 class="float-left"><strong>Fecha:</strong> {{date('d/m/Y')}}</h3><button  id="eliminar" class="btn btn-danger float-right">X</button>
+                <h3 class="float-left"><strong>Fecha:</strong> {{date('d/m/Y')}}</h3><a href="/eliminarc"  id="eliminar" class="btn btn-danger float-right">X</a>
                 <div class="container-fluid mt-5">
                 <table class="table table-bordered table-sm">
                     <thead>
@@ -68,6 +68,7 @@
                     </tr>
                     </thead>
                     <tbody>
+                        @if(Session::get('cart')!=null)
                     @foreach(Session::get('cart') as $values) 
                         <tr>
                             <td>{{$values['nombre']}}</td>
@@ -78,6 +79,7 @@
                             <td class="p-0" id="eliminar"><a href="" class="btn btn-danger w-100" name="elimi"><span class="fas fa-trash-alt"></span></a></td>
                         </tr>   
                     @endforeach
+                    @endif
                     </tbody>
                 </table>
                 <h4 id="total" name="total" class="float-right mr-5">Total: <strong>Q.</strong></h4><br>
