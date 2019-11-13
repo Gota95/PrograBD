@@ -155,7 +155,7 @@
                             <i class="icon-basket "></i><span class="nav-text">Ventas</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="/venta">Venta</a></li>
+                            <li><a href="/ventas">Venta</a></li>
 
                         </ul>
                     </li>
@@ -173,6 +173,7 @@
                           <li> <a href="{{ route('general') }}">Ventas General</a></li>
                           <li> <a href="{{ route('top20') }}">Top 20</a></li>
                           <li> <a href="{{ route('clientes') }}">Clientes</a></li>
+                          <li> <a href="{{ route('argeneral') }}">Articulos General</a></li>
                           <li> <a href="{{route('productos')}}">Productos en Existencia</a></li>
                         </ul>
                         </li>

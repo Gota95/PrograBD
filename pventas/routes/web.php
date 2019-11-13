@@ -28,7 +28,7 @@ Route::resource('sucursal','SucursalController');
 Route::resource('categoria','CategoriaController');
 
 Route::resource('articulo','ArticuloController');
-Route::resource('venta','VentaController');
+Route::resource('ventas','VentaController');
 Route::resource('ingreso','IngresoController');
 
 //RUTA PARA MODULO DE USUARIOS
@@ -38,8 +38,9 @@ Route::resource('persona','PersonaController');
 
 //RUTA PARA MODULO DE REPORTES
 Route::name('imprimir')->get('/venta','RVentasController@ver');
+Route::post('Venta', 'RVentasController@imprimir');
 Route::name('general')->get('/general','RVentasController@general');
-Route::post('Ventas', 'RVentasController@imprimir');
+Route::name('argeneral')->get('/articulos','RarticuloController@general');
 Route::name('productos')->get('/productos','RProductosController@imprimir');
 Route::name('clientes')->get('/clientes','RClienteController@cliente');
 Route::name('top20')->get('/top20','RTopController@imprimirtop');
