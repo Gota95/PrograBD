@@ -125,9 +125,9 @@ class ArticuloController extends Controller
     {
       // se envia la tabla categoria para enlazarla con los articulos
       $categorias=DB::table('categoria')->get();
-      $rarticulos=DB::table('rarticulo')->get();
+
       //retornamos la vista y los datos del articulo en una variable
-      return view("articulo.edit",["articulo"=>Articulo::findOrFail($id),"categorias"=>$categorias, "rarticulos"=>$rarticulos]);
+      return view("articulo.edit",["articulo"=>Articulo::findOrFail($id),"categorias"=>$categorias]);
     }
 
     /**
