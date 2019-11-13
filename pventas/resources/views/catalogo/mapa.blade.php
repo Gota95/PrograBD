@@ -29,8 +29,8 @@ $along=array();
   </head>
   @section('contentmapa')
   <body>
-  
-</div>
+  <div style="margin-top:6%; margin-left:1rem">
+
 	<h1 class="bg-alert text-success font-weight-bold display-4">..Encuentramos en nuestra tienda más cercana..</h1>
 	<div class="container align-items-center">
 		<div class="text-center">
@@ -39,6 +39,7 @@ $along=array();
 				
 			</div>
 		</div>
+	</div>
 	</div>
 	<script>
     	var ala = [ '<?php echo implode("','",$alat);?>' ];
