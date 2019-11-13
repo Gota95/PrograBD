@@ -7,7 +7,7 @@ use App\Articulo;
 use App\Sucursal;
 use App\Categoria;
 Use DB;
-use Illuminate\Support\Facades\DB as IlluminateDB;
+use Session;
 
 class CatalogoController extends Controller
 {
@@ -38,12 +38,8 @@ class CatalogoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()//cotizacion
+    public function create()
     {
-        DB::select('CREATE TEMPORARY TABLE carritotemp(id INT NOT NULL AUTO_INCREMENT, 
-        idarticulo INT NOT NULL,
-        cantidad INT NOT NULL,
-        PRIMARY KEY(id)');
     }
 
     /**
@@ -82,9 +78,9 @@ class CatalogoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id)//cotizacion
     {
-        //
+        return view('catalogo.carrito');
     }
 
     /**
@@ -108,5 +104,29 @@ class CatalogoController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function carrito($id){
+
+        $product = Articulo::find($id);
+        $idp=$product->idarticulo;
+        $nombre=$product->nombre;
+        $precio=$product->precio;
+
+        $cart = Session::get('cart');
+        $cart[$idp] = array(
+            "id" => $idp,
+            "nombre" => $nombre,
+            "precio" => $precio,
+            "cantidad"=>1,
+            "subtotal"=> $precio*1,
+        );
+    
+        Session::put('cart', $cart);
+        //dd(Session::get('cart'));
+        
+        //return redirect()->back();
+        $categorias=Categoria::all();
+        return view('catalogo.carrito',compact('categorias'));
     }
 }

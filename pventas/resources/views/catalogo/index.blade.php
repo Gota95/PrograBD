@@ -3,8 +3,8 @@
  <!--**********************************
             Sidebar start
         ***********************************-->
-        <div class="container" style="float:left;">
-        <div class="nk-sidebar">
+        <div class="container position-static">
+        <div class="nk-sidebar"  style="position: fixed; left: 0; top: 5em;">
             <div class="nk-nav-scroll">
                 <ul class="metismenu" id="menu">
                     <li class="nav-label">Categorias</li>
@@ -54,7 +54,7 @@
 </head>
        
 
-<div class="m-3">
+<div style="margin-top:7%; margin-left:1rem">
   <div class="col-lg-12 col-lm-8" >
     <div class="card ">
       <div class="card-header">
@@ -75,7 +75,7 @@
             <h5 style="color:coral">Q.{{$a->precio}}</h5>
             <h5>{{$a->categoria}}</h5>
             <a href="{{ route('catalogo.show', $a->idarticulo) }}" class="btn btn-primary">Detalle</a>
-            <a href="{{ route('catalogo.create') }}" class="btn btn-primary">Carrito</a>
+            <a href="{{ route('catalogo.carrito', $a->idarticulo) }}" class="btn btn-primary">Carrito</a>
           </div>
         </div>
         @endforeach

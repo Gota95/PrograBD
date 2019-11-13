@@ -40,6 +40,9 @@ Route::resource('persona','PersonaController');
 Route::name('imprimir')->get('/imprimir','RVentasController@imprimir');
 Route::name('productos')->get('/productos','RProductosController@imprimir');
 
-
+Route::get('catalogo/{id}/carrito', 'CatalogoController@carrito')->name('catalogo.carrito');
 //RUTA PARA MODULO DE CATALOGO
 Route::resource('catalogo','CatalogoController');
+
+
+

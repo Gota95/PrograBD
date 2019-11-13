@@ -1,12 +1,12 @@
-@extends ('layouts.content')
-@section('contenido')
+@extends ('welcome')
+
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
  <!--**********************************
             Sidebar start
         ***********************************-->
         <div class="container" style="float:left;">
-        <div class="nk-sidebar">
+        <div class="nk-sidebar" style="position: fixed; left: 0; top: 5em;">
             <div class="nk-nav-scroll">
                 <ul class="metismenu" id="menu">
                     <li class="nav-label">Sucursales</li>
@@ -22,10 +22,10 @@
             </div>
         </div>
 </div>
-
-<br>
-<div class="row">
-  <div class="card col-lg-8" style="left: 300px;">
+@section('contenido')
+<div style="margin-top:7%; margin-left:1rem">
+<div class="col-lg-12 col-lm-8" >
+    <div class="card ">
     <div class="card-header">
 
       <h1>{{$articulo->nombre}}</h1>
@@ -44,7 +44,7 @@
           <h5>{{$articulo->categoria}}</h5>
           <br>
     
-          <a href="{{ route('catalogo.index', $articulo->idarticulo) }}"> <button class="btn btn-info"><i class="ti-shopping-cart"></i>Agregar</button></a>
+          <a href="{{ route('catalogo.carrito', $articulo->idarticulo) }}"> <button class="btn btn-info"><i class="ti-shopping-cart"></i>Agregar</button></a>
                
 
          
@@ -52,7 +52,9 @@
       </div>
     </div>
   </div>
-  <div class="card col-lg-8" style="left: 300px;">
+</div>
+  <div class="col-lg-12 col-lm-8" >
+    <div class="card">
     <div class="card-header">
       <h1>Productos Sugeridos</h1>
     </div>
