@@ -41,4 +41,25 @@ class RVentasController extends Controller
       $sucursales=DB::table('sucursal')->get();
       return view("reportes.sucursal",["sucursales"=>$sucursales]);
     }
+
+    public function general(){
+      //se obtienen los registros de las ventas y se filtran solo las que se realizarion en el dia actual
+
+      $day = date("Y-m-d");
+      $ventas=DB::table('venta as v')
+      ->join('detalle_venta as dv','v.idventa','=','dv.idventa')
+      ->join('persona as p','v.idcliente','=','p.idpersona')
+      ->join('sucursal as s','dv.idsucursal','=','s.idsucursal')
+      ->select('v.num_comprobante','v.total_venta',DB::raw('s.nombre as sucursal'),DB::raw('p.nombre as cliente'))
+      ->orderBy('v.idventa','asc')
+      ->where('v.estado','=','A')
+      ->get();
+
+          //se configura y crea el archivo pdf para mostrar el reporte
+      $view= \View::make('reportes.generaltop100')->with('ventas',$ventas);
+      $pdf = \App::make('dompdf.wrapper');
+      $pdf->loadHTML($view);
+      return $pdf->stream('ventas'.'.pdf');
+
+    }
 }
