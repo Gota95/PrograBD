@@ -26,7 +26,7 @@
           </i> Iniciar Sesión</a></h3>
         </div>
     </nav>
-    <div class="container-fluid" style="margin:0%; padding:0%;">
+    <div class="container-fluid" style="margin-top:58px; padding:0%;">
 		  @yield('carrusel')
     </div>
     

@@ -53,7 +53,7 @@
 
 </head>
        
-
+<body>
 <div style="margin-top:7%; margin-left:1rem">
   <div class="col-lg-12 col-lm-8" >
     <div class="card ">
@@ -84,6 +84,7 @@
       </div>
     </div>
 </div>
+</body>
         <!--**********************************
         Scripts
     ***********************************-->
