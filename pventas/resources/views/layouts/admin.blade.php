@@ -170,6 +170,7 @@
                         </a>
                         <ul aria-expanded="false">
                           <li> <a href="{{ route('imprimir') }}">Ventas por Sucursal</a></li>
+                          <li> <a href="{{ route('general') }}">Ventas General</a></li>
                           <li> <a href="{{ route('top20') }}">Top 20</a></li>
                           <li> <a href="{{ route('clientes') }}">Clientes</a></li>
                           <li> <a href="{{route('productos')}}">Productos en Existencia</a></li>

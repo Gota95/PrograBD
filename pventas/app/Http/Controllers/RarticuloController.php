@@ -5,82 +5,60 @@ namespace App\Http\Controllers;
 use App\Rarticulo;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
+use DB;
+
 
 class RarticuloController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
+  public function mes(){
+//se obtienen los registros de los productos
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+    $mes=Carbon::now();
+    $articulos=DB::table('detalle_venta as dv')
+    ->join('venta as v','dv.idventa','=','v.idventa')
+    ->join('articulo as a','dv.idarticulo','=','a.idarticulo')
+    ->select(DB::raw('count(dv.idarticulo) as compras'),DB::raw('a.nombre as articulo'))
+    ->where('v.fecha_hora','>=',)
+    ->groupBy('a.nombre')
+    ->get();
+    //se configura y crea el archivo pdf para mostrar el reporte
+    $view= \View::make('reportes.clientes',compact('clientes'));
+    $pdf = \App::make('dompdf.wrapper');
+    $pdf->loadHTML($view);
+    return $pdf->stream('clientes'.'.pdf');
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+  }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Rarticulo  $rarticulo
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Rarticulo $rarticulo)
-    {
-        //
-    }
+  public function sucursal(){
+//se obtienen los registros de los productos
+    $articulos=DB::table('venta as v')
+    ->join('persona as p','v.idcliente','=','p.idpersona')
+    ->select(DB::raw('p.nombre as cliente'),DB::raw('count(v.idcliente) as compras'))
+    ->where('v.estado','=','A')
+    ->groupBy('p.nombre')
+    ->get();
+    //se configura y crea el archivo pdf para mostrar el reporte
+    $view= \View::make('reportes.clientes',compact('clientes'));
+    $pdf = \App::make('dompdf.wrapper');
+    $pdf->loadHTML($view);
+    return $pdf->stream('clientes'.'.pdf');
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Rarticulo  $rarticulo
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Rarticulo $rarticulo)
-    {
-        //
-    }
+  }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Rarticulo  $rarticulo
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Rarticulo $rarticulo)
-    {
-        //
-    }
+  public function general(){
+//se obtienen los registros de los productos
+    $articulos=DB::table('detalle_venta as dv')
+    ->join('venta as v','dv.idventa','=','v.idventa')
+    ->join('articulo as a','dv.idarticulo','=','a.idarticulo')
+    ->select(DB::raw('count(dv.idarticulo) as compras'),DB::raw('a.nombre as articulo'))
+    ->groupBy('a.nombre')
+    ->get();
+    //se configura y crea el archivo pdf para mostrar el reporte
+    $view= \View::make('reportes.clientes',compact('clientes'));
+    $pdf = \App::make('dompdf.wrapper');
+    $pdf->loadHTML($view);
+    return $pdf->stream('clientes'.'.pdf');
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Rarticulo  $rarticulo
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Rarticulo $rarticulo)
-    {
-        //
-    }
+  }
 }

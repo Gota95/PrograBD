@@ -23,7 +23,7 @@
         </div>
 </div>
 @section('contenido')
-<div style="margin-top:7%; margin-left:1rem">
+<div style="margin-top:7%; margin-left:2rem">
 <div class="col-lg-12 col-lm-8" >
     <div class="card ">
     <div class="card-header">
@@ -53,6 +53,11 @@
     </div>
   </div>
 </div>
+
+
+
+
+
   <div class="col-lg-12 col-lm-8" >
     <div class="card">
     <div class="card-header">
@@ -61,8 +66,8 @@
     <div class="card-body">
       <div class="row">
         @foreach ($sugeridos as $a)
-        <div class="card bg-light" style="margin: 5px; ">
-          <img class="card-img-top" src="{{ asset('imagenes/articulos/'.$a->imagen) }}" width="50" height="300" alt="Card image">
+        <div class="card bg-light" style="margin: 5px; width:250px; left: 100px; text-align: center;">
+          <img class="card-img-top" src="{{ asset('imagenes/articulos/'.$a->imagen) }}" width="0" height="250" alt="Card image">
           <div class="card-body">
             <h4 class="card-title">{{$a->codigo}}</h4>
             <h4 class="card-title">{{$a->nombre}}</h4>
@@ -77,6 +82,7 @@
     </div>
   </div>
 </div>
+
 
 
 
