@@ -25,7 +25,7 @@ class CatalogoController extends Controller
       'art.nombre','art.precio','art.stock','art.descripcion','art.imagen','art.estado',DB::raw("cat.nombre as categoria"))
       ->where('cat.nombre','LIKE','%'.$query.'%')
       ->orderBy('art.idarticulo','asc')
-      ->paginate(7);
+      ->paginate();
       $categorias=Categoria::all();
       $sucursals=Sucursal::all();
       // se retorna  la vista a mostrar y en una variable los articulos
