@@ -38,7 +38,7 @@ class ArticuloController extends Controller
       // se retorna  la vista a mostrar y en una variable los articulos
 
       $sucursales=Sucursal::all();
-      return view("articulo.index",["articulos"=>$articulos,"searchText"=>$query ],compact('rarticulos','sucursales'));
+      return view("articulo.index",["articulos"=>$articulos,"searchText"=>$query ],compact('sucursales'));
       }
     }
 
