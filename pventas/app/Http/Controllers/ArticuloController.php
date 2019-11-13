@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Articulo;
 use App\Sucursal;
-use App\Rarticulo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use App\Http\Requests\ArticuloFormRequest;
@@ -37,9 +36,9 @@ class ArticuloController extends Controller
       ->orderBy('art.idarticulo','asc')
       ->paginate(7);
       // se retorna  la vista a mostrar y en una variable los articulos
-      $rarticulos=Rarticulo::all();
+
       $sucursales=Sucursal::all();
-      return view("articulo.index",["articulos"=>$articulos,"searchText"=>$query ],compact('rarticulos','sucursales'));
+      return view("articulo.index",["articulos"=>$articulos,"searchText"=>$query ],compact('sucursales'));
       }
     }
 
