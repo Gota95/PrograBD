@@ -12,21 +12,21 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
 Route::get('/map',function(){
     return view('catalogo.mapa');
-});
-Route::get('/catalogo/{idarticulo}', function () {
-    return view('catalogo.carrito');
 });
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+//RUTA PARA MODULO DE REGISTRO DE SURCURSAL
+Route::resource('sucursal','SucursalController');
 
 //RUTA PARA MODULO DE PRODUCTO
 Route::resource('categoria','CategoriaController');
+
 Route::resource('articulo','ArticuloController');
 Route::resource('venta','VentaController');
 Route::resource('ingreso','IngresoController');
@@ -41,6 +41,9 @@ Route::name('imprimir')->get('/imprimir','RVentasController@imprimir');
 Route::name('productos')->get('/productos','RProductosController@imprimir');
 Route::name('top20')->get('/top20','RTopController@imprimirtop');
 
-
+Route::get('catalogo/{id}/carrito', 'CatalogoController@carrito')->name('catalogo.carrito');
 //RUTA PARA MODULO DE CATALOGO
 Route::resource('catalogo','CatalogoController');
+
+
+
