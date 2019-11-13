@@ -38,6 +38,7 @@ Route::resource('persona','PersonaController');
 
 //RUTA PARA MODULO DE REPORTES
 Route::name('imprimir')->get('/venta','RVentasController@ver');
+Route::name('general')->get('/general','RVentasController@general');
 Route::post('Ventas', 'RVentasController@imprimir');
 Route::name('productos')->get('/productos','RProductosController@imprimir');
 Route::name('clientes')->get('/clientes','RClienteController@cliente');
