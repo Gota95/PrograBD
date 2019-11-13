@@ -39,6 +39,7 @@ Route::resource('persona','PersonaController');
 //RUTA PARA MODULO DE REPORTES
 Route::name('imprimir')->get('/imprimir','RVentasController@imprimir');
 Route::name('productos')->get('/productos','RProductosController@imprimir');
+Route::name('top20')->get('/top20','RTopController@imprimirtop');
 
 
 //RUTA PARA MODULO DE CATALOGO

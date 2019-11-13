@@ -167,6 +167,7 @@
                         </a>
                         <ul aria-expanded="false">
                           <li> <a href="{{ route('imprimir') }}">Ventas del Dia</a></li>
+                          <li> <a href="{{ route('top20') }}">Top 20</a></li>
                           <li> <a href="{{route('productos')}}">Productos en Existencia</a></li>
                         </ul>
                         </li>
