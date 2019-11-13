@@ -58,11 +58,11 @@
 <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
 
 <div class="form-group">
-<label>Tipo Comprobante </label>
+<label>Tipo Pago</label>
 <select  name="tipo_comprobante" class="form-control">
-<option value="Boleta">Boleta</option>
-<option value="Factura">Factura</option>
-<option value="Ticket">Ticker </option>
+<option value="Credito">Credito</option>
+<option value="Debito">Debito</option>
+
 </select>
 </div>
 </div>
@@ -70,8 +70,8 @@
 <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
 
 <div class="form-group">
-<label for="serie_comprobante">Serie Comprobante</label>
-<input type="text" name="serie_comprobante" class="form-control" placeholder="Serie">
+<label for="serie_comprobante">Numero de Tarjeta</label>
+<input type="text" name="serie_comprobante" class="form-control" placeholder="XXXXXXX">
 </div>
 </div>
 
@@ -79,8 +79,8 @@
 <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
 
 <div class="form-group">
-<label for="num_comprobante">No.Comprobante</label>
-<input type="text" name="num_comprobante" class="form-control" placeholder="Comprobante">
+<label for="num_comprobante">CVV</label>
+<input type="text" name="num_comprobante" class="form-control" placeholder="CVV">
 </div>
 </div>
 
@@ -260,7 +260,7 @@ Agregar
        var fila='<tr class="selected" id="fila'+cont+'"><td><button type="button" class="btn btn-warning" onclick="eliminar('+cont+');">X</button></td><td><input type="hidden" name="idarticulo[]" value="'+idarticulo+'">'+articulo+'</td><td><input type="number" name="cantidad[]" value="'+cantidad+'"></td><td><input type="number" name="precio_venta[]" value="'+precio_venta+'"></td><td><input type="number" name="descuento[]" value="'+descuento+'"></td><td>'+subtotal[cont]+'</td></tr>';
        cont++;
        limpiar();
-       $('#total').html("$/ " + total);
+       $('#total').html("Q./ " + total);
        $('#total_venta').val(total);
        evaluar();
        $('#detalles').append(fila);
