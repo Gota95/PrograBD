@@ -35,10 +35,10 @@
   <!-- The slideshow -->
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="https://img-cdn.hipertextual.com/files/2019/06/hipertextual-estas-son-imagenes-que-se-juegan-premio-mejor-astrofotografo-ano-2019530966.jpg?strip=all&lossy=1&quality=57&resize=740%2C490&ssl=1" alt="Los Angeles" width="1100" height="500">
+      <img src="http://www.intelaf.com/data1/Banner_nueva_pagina/banner-hyperx-audifonos-pc.jpg" alt="Los Angeles" width="1100" height="500">
     </div>
     <div class="carousel-item">
-      <img src="https://www.tekcrispy.com/wp-content/uploads/2017/12/bancos-imagenes-gratis-640x422.jpg" alt="Chicago" width="1100" height="500">
+      <img src="http://www.intelaf.com/data1/Banner_nueva_pagina/banner-nexxt-pc.jpg" alt="Chicago" width="1100" height="500">
     </div>
     <div class="carousel-item">
       <img src="https://t3.ftcdn.net/jpg/02/40/37/22/500_F_240372267_Z1hFxTp6xNAf31D6Xml4RRG3hDOl9jdZ.jpg" alt="New York" width="1100" height="500">
@@ -56,7 +56,7 @@
     <div class="container">
         <div class="row">
         @foreach ($articulos as $a)
-            <div class="card bg-ligth align-items-center" style="margin: 15px; width:16%; height:250px; border-color: black; border-width: 5px; border-style: solid;">
+            <div class="card bg-ligth align-items-center" style="margin: 15px; width:20%; height:350px; border-color: black; border-width: 2px; border-style: solid;">
             <img class="card-img-top mt-1" src="{{ asset('imagenes/articulos/'.$a->imagen) }}" alt="Card image" style="width:75%; height:75px;">
             <div class="card-body text-center">
                 <h4 class="card-title">{{$a->nombre}}</h4>
@@ -74,7 +74,7 @@
     <img src="https://blog.bq.com/wp-content/uploads/2019/04/5.-Active1.png" width="100%" height="250px">
 </div>
 <div class="container-fluid" style="margin:0%;">
-    <h1>asd</h1><br><br><br><br><br><br><br><br>
+   <CENTER> <h1>STORE ONLINE S.A</h1><br><br><br><br><br><br><br><br></CENTER>
 </div>
 <script>
   $('#promociones').carousel({

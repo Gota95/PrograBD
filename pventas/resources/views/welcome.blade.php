@@ -19,7 +19,7 @@
 
       <nav class="navbar navbar-expand-md navbar-dark bg-dark navbar-laravel fixed-top">
         <div class="container">
-          <h3><a class="navbar-brand text-white" href="/">Sistema Ventas</a></h3>
+          <h3><a class="navbar-brand text-white" href="/">INICIO</a></h3>
           <h3><a class="navbar-brand text-white" href="/catalogo">Productos</a></h3>
           <h3><a class="navbar-brand text-white" href="/map">Mapa</a></h3>       
           <h3><a href="{{'/home'}}" style="text-decoration-line: none" class="text-white"><i calss="icon-user text-primary">
