@@ -169,8 +169,9 @@
                         <i class="icon-docs"></i><span class="nav-text">Reportes</span>
                         </a>
                         <ul aria-expanded="false">
-                          <li> <a href="{{ route('imprimir') }}">Ventas del Dia</a></li>
+                          <li> <a href="{{ route('imprimir') }}">Ventas por Sucursal</a></li>
                           <li> <a href="{{ route('top20') }}">Top 20</a></li>
+                          <li> <a href="{{ route('clientes') }}">Clientes</a></li>
                           <li> <a href="{{route('productos')}}">Productos en Existencia</a></li>
                         </ul>
                         </li>
@@ -178,7 +179,7 @@
                         <li>
                         <a href="/">
                         <i class="icon-social-facebook "></i><span class="nav-text">Pagina Principal</span>
-           
+
                         </a>
 
 </li>

@@ -30,6 +30,18 @@
 <input type="date" name="fecha_hora" value="<?php echo $day; ?>" readonly class="form-control" placeholder="fecha">
 </div>
 </div>
+
+<div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+<div class="form-group">
+<label>Sucursal</label>
+<select name="idsucursal" id="idsucursal" class="form-control">
+@foreach ($sucursales as $suc)
+<option value="{{$suc->idsucursal}}">{{$suc->nombre}}</option>
+@endforeach
+</select>
+</div>
+</div>
+
 <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
 <div class="form-group">
 <label>Cliente</label>

@@ -48,6 +48,7 @@ class VentaController extends Controller
     {
 
 
+      $sucursales=DB::table('sucursal')->get();
       $personas=DB::table('persona')
       ->where('idtipopersona','=','2')->get();
       $articulos=DB::table('articulo as art')
@@ -58,7 +59,7 @@ class VentaController extends Controller
       ->where('art.stock','>','0')
       ->groupBy('articulo','art.idarticulo','art.stock')
       ->get();
-      return view("venta.create",["personas"=>$personas,"articulos"=>$articulos]);
+      return view("venta.create",["personas"=>$personas,"articulos"=>$articulos,"sucursales"=>$sucursales]);
     }
 
     /**
@@ -84,6 +85,7 @@ class VentaController extends Controller
 
         $venta->save();
 
+        $idsucursal=$request->get('idsucursal');
         $idarticulo=$request->get('idarticulo');
         $cantidad=$request->get('cantidad');
         $descuento=$request->get('descuento');
@@ -95,6 +97,7 @@ class VentaController extends Controller
         while ($cont<count($idarticulo)) {
           $detalle=new DetalleVenta();
           $detalle->idventa=$venta->idventa;
+          $detalle->idsucursal=$idsucursal;
           $detalle->idarticulo=$idarticulo[$cont];
           $detalle->cantidad=$cantidad[$cont];
           $detalle->descuento=$descuento[$cont];

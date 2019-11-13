@@ -37,13 +37,12 @@ Route::resource('users','UsersController');
 Route::resource('persona','PersonaController');
 
 //RUTA PARA MODULO DE REPORTES
-Route::name('imprimir')->get('/imprimir','RVentasController@imprimir');
+Route::name('imprimir')->get('/venta','RVentasController@ver');
+Route::post('Ventas', 'RVentasController@imprimir');
 Route::name('productos')->get('/productos','RProductosController@imprimir');
+Route::name('clientes')->get('/clientes','RClienteController@cliente');
 Route::name('top20')->get('/top20','RTopController@imprimirtop');
 
 Route::get('catalogo/{id}/carrito', 'CatalogoController@carrito')->name('catalogo.carrito');
 //RUTA PARA MODULO DE CATALOGO
 Route::resource('catalogo','CatalogoController');
-
-
-

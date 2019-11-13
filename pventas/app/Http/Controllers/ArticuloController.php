@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Articulo;
 use App\Sucursal;
-use App\Rarticulo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use App\Http\Requests\ArticuloFormRequest;
@@ -37,7 +36,7 @@ class ArticuloController extends Controller
       ->orderBy('art.idarticulo','asc')
       ->paginate(7);
       // se retorna  la vista a mostrar y en una variable los articulos
-      $rarticulos=Rarticulo::all();
+
       $sucursales=Sucursal::all();
       return view("articulo.index",["articulos"=>$articulos,"searchText"=>$query ],compact('rarticulos','sucursales'));
       }
@@ -53,8 +52,8 @@ class ArticuloController extends Controller
     {
       //se obtiene la tabla categoria y se llama la vista que se mostrara
       $categorias=DB::table('categoria')->get();
-      $sucursals=DB::table('sucursal')->get();
-      return view("articulo.create",["categorias"=>$categorias,"sucursals"=>$sucursals]);
+      $sucursales=DB::table('sucursal')->get();
+      return view("articulo.create",["categorias"=>$categorias,"sucursals"=>$sucursales]);
     }
 
     /**
@@ -66,7 +65,7 @@ class ArticuloController extends Controller
      //funcion que guarda en la base de datos la informacion obtenida del formulario
     public function store(Request $request)
     {
-  
+
       //se obtienen los datos enviados desde el formulario creando asi un nuevo articulo
       $articulo= new Articulo;
 
@@ -85,7 +84,7 @@ class ArticuloController extends Controller
       $articulo->imagen=$file->getClientOriginalName();
       }
       $articulo->idcategoria=$request->get('idcategoria');
-  
+
       $articulo->save();
 
       $rarticulos= new Rarticulo;
@@ -93,10 +92,10 @@ class ArticuloController extends Controller
       $rarticulos->idsucursal=$request->get('idsucursal');
       $rarticulos->save();
 
-      
+
       DB::commit();
 
- 
+
       //se redirecciona al index donde se listan todos los articulos
       return Redirect::to('articulo/');
     }

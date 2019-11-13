@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Ventas</title>
-    {{-- SE DEFINE EL ESTILO DEL FORMULARIO PARA LA VISTA AMIGABLE --}}
+  <title>Productos</title>
+  {{-- SE DEFINE EL ESTILO DEL FORMULARIO PARA LA VISTA AMIGABLE --}}
   <style>
   table{
     font-family: arial, sans-serif;
@@ -24,24 +24,17 @@
 </head>
 <body>
   {{-- nombre del reporte --}}
-  @foreach($sucursal as $s)
-  <h1>VENTAS SUCURSAL {{ $s->nombre}}</h1>
- @endforeach
-  {{-- <h3>{{ $sucursal->nombre }}</h3> --}}
+  <h1>Lista de Productos</h1>
   {{-- creamos la tabla con los diferentes campos de encabezado y el cuerpo que contiene los datos obtenidos anteriormente --}}
     <table>
       <tr>
-        <th>Sucursal</th>
-        <th>Numero Comprobante</th>
-        <th>Total Venta</th>
-        <th>Cliente</th>
+        <th>Nombre</th>
+        <th>Compras</th>
       </tr>
-      @foreach($ventas as $v)
+      @foreach($clientes as $c)
         <tr>
-          <td>{{$v->sucursal}}</td>
-          <td>{{$v->num_comprobante}}</td>
-          <td>Q.{{$v->total_venta}}</td>
-          <td>{{$v->cliente}}</td>
+          <td>{{$c->cliente}}</td>
+          <td>{{$c->compras}}</td>
         </tr>
       @endforeach
     </table>
