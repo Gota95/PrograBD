@@ -45,6 +45,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Carrito</title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 <body>
     <div style="margin-top:7%; margin-left:1rem">
@@ -54,7 +55,7 @@
                     <h1 class="text-center">Cotización</h1>
                 </div>
                 <div class="card-body">
-                <h3 class="float-left"><strong>Fecha:</strong> {{date('d/m/Y')}}</h3><button  id="eliminar" class="btn btn-danger float-right">X</button>
+                <h3 class="float-left"><strong>Fecha:</strong> {{date('d/m/Y')}}</h3><a href="/eliminarc"  id="eliminar" class="btn btn-danger float-right">X</a>
                 <div class="container-fluid mt-5">
                 <table class="table table-bordered table-sm">
                     <thead>
@@ -67,19 +68,21 @@
                     </tr>
                     </thead>
                     <tbody>
+                        @if(Session::get('cart')!=null)
                     @foreach(Session::get('cart') as $values) 
                         <tr>
                             <td>{{$values['nombre']}}</td>
                             <td><input class="form-control form-control-sm" type="number" value="{{$values['cantidad']}}">
                             </td>
                             <td>Q.{{$values['precio']}}</td>
-                            <td>Q.<p name="sub">{{$values['subtotal']}}</p></td>
+                            <td>Q.<input type="text" name="sub" value="{{$values['subtotal']}}"></td>
                             <td class="p-0" id="eliminar"><a href="" class="btn btn-danger w-100" name="elimi"><span class="fas fa-trash-alt"></span></a></td>
                         </tr>   
                     @endforeach
+                    @endif
                     </tbody>
                 </table>
-                <h3 class="float-right mr-5">Total: <strong>Q.</strong></h3><br>
+                <h4 id="total" name="total" class="float-right mr-5">Total: <strong>Q.</strong></h4><br>
                 <div class="container-fluid">
                     
                 </div>
@@ -93,12 +96,14 @@
 
 
 <script>
-    var sum=document.getElementsByName('sub');
+    var sum=document.getElementsByName("sub");
     var suma=0;
-    for(i=1;i<=sum.length;i++){
-        suma=suma+sum.values;
+    for(i=0;i<=sum.length;i++){
+        var cant=parseInt(document.getElementsByName("sub")[i].value);
+        suma=suma+cant;
+        document.getElementById("total").innerHTML="Total: <strong>Q."+suma+"</strong>";
     }
-    alert(suma);
+    
 function imprimirElemento(elemento){
     var boto = document.getElementsByName("elimi");
     for(i=1;i<=boto.length*100;i++){
@@ -134,6 +139,7 @@ function eliminarElemento(id){
     	}
     }
 </script>
+
 </body>
 </html>
 @endsection

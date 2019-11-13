@@ -46,5 +46,6 @@ Route::name('clientes')->get('/clientes','RClienteController@cliente');
 Route::name('top20')->get('/top20','RTopController@imprimirtop');
 
 Route::get('catalogo/{id}/carrito', 'CatalogoController@carrito')->name('catalogo.carrito');
+Route::get('/eliminarc', 'CatalogoController@eliminar');
 //RUTA PARA MODULO DE CATALOGO
 Route::resource('catalogo','CatalogoController');

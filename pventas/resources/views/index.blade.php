@@ -51,7 +51,7 @@
     <h1>Nuevos Productos</h1>
     <?php
         use App\Articulo;
-        $articulos=Articulo::paginate(5);
+        $articulos=Articulo::paginate(8);
     ?>
     <div class="container">
         <div class="row">

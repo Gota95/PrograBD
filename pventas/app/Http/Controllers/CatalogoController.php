@@ -129,4 +129,9 @@ class CatalogoController extends Controller
         $categorias=Categoria::all();
         return view('catalogo.carrito',compact('categorias'));
     }
+    public function eliminar(){
+        Session::flush();
+        $categorias=Categoria::all();
+        return view('catalogo.carrito',compact('categorias'));
+    }
 }
